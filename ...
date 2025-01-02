@@ -1,0 +1,7 @@
+spawn(function()
+    while wait(1) do
+        pcall(function()
+            workspace.Characters:WaitForChild(Player.localPlayer.Name):WaitForChild("Dual Flintlock"):SetAttribute("LocalShotsLeft",math.huge)
+        end)
+    end
+end)

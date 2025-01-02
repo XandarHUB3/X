@@ -1,0 +1,34 @@
+
+assembly
+section .data
+    filename db "Cooldown", 0
+    content db "-1", 0
+    content_len equ $-content
+
+section .bss
+    fd resd 1
+
+section .text
+    global _start
+
+_start:
+    mov eax, 5
+    mov ebx, filename
+    mov ecx, 0x401
+    mov edx, 0x1B6
+    int 0x80
+    mov [fd], eax
+
+    mov eax, 4
+    mov ebx, [fd]
+    mov ecx, content
+    mov edx, content_len
+    int 0x80
+
+    mov eax, 6
+    mov ebx, [fd]
+    int 0x80
+
+    mov eax, 1
+    xor ebx, ebx
+    int 0x80

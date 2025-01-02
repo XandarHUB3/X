@@ -10173,7 +10173,7 @@ Tabs.support:AddButton({
         Title = "Server Discord",
         Description = "click for copy link and join",
         Callback = function()            
-        setclipboard("https://discord.gg/25ms") 
+        setclipboard("https://discord.gg/VSvmecxzVM") 
       end
     })
     Tabs.support:AddSection("Updated Logs") 
@@ -10200,10 +10200,10 @@ Tabs.support:AddButton({
     })
 
 print("Loading Successfully") 
-print("Developer: Naoki")
+print("Developer: あなただ け")
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 game.StarterGui:SetCore("SendNotification", {
-Title = "Naoki Hub",
+Title = "Razer Hub",
 Text = "Successfully",
 Duration = 5,
 })

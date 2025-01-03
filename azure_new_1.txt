@@ -6,14 +6,14 @@ local b = {
             ["color"] = tonumber(0xffffff); -- สีขอบ
             ["fields"] = {
                 {
-                    ["name"] = "Razer Hub Fisch Pool";
-                    ["value"] = "คำ";
-                    ["inline"] = false;
+                    ["name"] = "Join Script";
+                    ["value"] = "";
+                    ["inline"] = true;
                 },
             };
             ["description"] = "ข้อความธิบาย";
             ["author"] = {
-                ["name"] = "จะอะไรก็ใส่ไป";
+                ["name"] = "Razer Hub";
                 ["icon_url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
             };
             ["thumbnail"] = {

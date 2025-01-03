@@ -4,25 +4,15 @@ local PlayerCount = #game.Players:GetPlayers()
 if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island")then
     Mirage = "True"
 else
-    Mirage = "False"
+    Mirage = "true"
 end
 if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
     Moon = "🌕Full Moon 100%";
-elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-    Moon = "🌖Full Moon 75%";
-elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-    Moon = "🌗Full Moon 50%";
-elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-    Moon = "🌘Full Moon 25%";
-elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-    Moon = "🌘Full Moon 10%";
-else
-    Moon = "🌑Full Moon 0%";
 end
 Infomation = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
 NameGames = Infomation.Name
-_G.wephook = "https://discord.com/api/webhooks/1317419259386921004/EAh_9G68LoAXzzaH_k405xp8eYjLsUGgk1BikvDc0Q0LkHSPR5PIjrHtRzgXpPH6Ypf0"
-        if _G.wephook ~= "https://discord.com/api/webhooks/1317419262469476402/n1aNHamvYFhzkCyy5891_PRCDw3tptGLTHDi9rE5pXWuQyXzOzb8_I2bMJ9Rrt86yZo_" then
+_G.wephook = "https://discord.com/api/webhooks/1317369658097139743/LNbzp4F4stWFf-0Yc5Mgq1tDXiUZP55UPnlHxJvVI3cBU37tXfMOgtuJVkUh3HWi2aOe"
+        if _G.wephook ~= "https://discord.com/api/webhooks/1317370070317662298/hNdUAhgFU9dGiv5eR2e8BX2RNeLdQQaYaW3twAy4Zb8hXCcCrvrMCFHOqJrSaTpc3B5v" then
             pcall(function()
                 local url =
                 _G.wephook
@@ -34,7 +24,7 @@ _G.wephook = "https://discord.com/api/webhooks/1317419259386921004/EAh_9G68LoAXz
                               ["name"] = "🌕Full Moon🌕"
                           },
                           ["type"] = "rich",
-                          ["title"] = "FULL MOON NOTIFY",
+                          ["title"] = "Razer Hub FULL MOON NOTIFY",
                           ["color"] = tonumber(0x78da),
                           ["fields"] = {
                               {

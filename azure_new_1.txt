@@ -1,1 +1,38 @@
 
+local a = "https://discord.com/api/webhooks/1317360559108395009/psZ2XIbPZXvA5tbgzUWSnD5bY1JdJy6sW339TVaSgUM7y3Va__FNXl6fb3zhIJ-_7iSR"
+local b = {
+    ["embeds"] = {
+        {
+            ["color"] = tonumber(0xffffff); -- สีขอบ
+            ["fields"] = {
+                {
+                    ["name"] = "Razer Hub Fisch Pool";
+                    ["value"] = "คำ";
+                    ["inline"] = false;
+                },
+            };
+            ["description"] = "ข้อความธิบาย";
+            ["author"] = {
+                ["name"] = "จะอะไรก็ใส่ไป";
+                ["icon_url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
+            };
+            ["thumbnail"] = {
+                ["url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
+            };
+            ["footer"] = {
+                ["text"] = "จะอะไรก็ใส่ไป";
+                ["icon_url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
+            };
+            ["timestamp"] = DateTime.now():ToIsoDate()
+        }
+    },
+}
+local c = game:GetService("HttpService"):JSONEncode(b)
+
+local d = {
+    ["content-type"] = "application/json"
+}
+
+local e = http_request or request or HttpPost
+local f = {Url = a, Body = c, Method = "POST", Headers = d}
+e(f)

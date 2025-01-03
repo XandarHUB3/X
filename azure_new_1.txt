@@ -1,38 +1,86 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({Title = "Project Hub", SubTitle = ".gg/", TabWidth = 140, Size = UDim2.fromOffset(480, 340), Acrylic = false, Theme = "Darker", MinimizeKey = Enum.KeyCode.LeftControl})
+local Tabs = {General = Window:AddTab({Title = "General", Icon = "rbxassetid://15712703260"})}
+local Options = Fluent.Options
+do end
 
-local a = "https://discord.com/api/webhooks/1317360559108395009/psZ2XIbPZXvA5tbgzUWSnD5bY1JdJy6sW339TVaSgUM7y3Va__FNXl6fb3zhIJ-_7iSR"
-local b = {
-    ["embeds"] = {
-        {
-            ["color"] = tonumber(0xffffff); -- สีขอบ
-            ["fields"] = {
-                {
-                    ["name"] = "Join Script";
-                    ["value"] = "";
-                    ["inline"] = true;
-                },
-            };
-            ["description"] = "ข้อความธิบาย";
-            ["author"] = {
-                ["name"] = "Razer Hub";
-                ["icon_url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
-            };
-            ["thumbnail"] = {
-                ["url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
-            };
-            ["footer"] = {
-                ["text"] = "จะอะไรก็ใส่ไป";
-                ["icon_url"] = "https://img5.pic.in.th/file/secure-sv1/20241216152645.png";
-            };
-            ["timestamp"] = DateTime.now():ToIsoDate()
-        }
-    },
-}
-local c = game:GetService("HttpService"):JSONEncode(b)
+local GunAuraEnemies = Tabs.General:AddToggle("GunEnemies", {Title = "Gun Aura [Enemies] ", Default = false })
+local GunAuraPlayers = Tabs.General:AddToggle("GunPlayers", {Title = "Gun Aura [Player] ", Default = false })
+Tabs.General:AddButton({Title = "Dual Flintlock OP", Description = "Gun Super Very OP",Callback = function()
+  local DataWeapon = require(game:GetService("ReplicatedStorage").Modules.CombatUtil):GetWeaponData("Dual Flintlock")
+  DataWeapon.Cooldown = 0
+  DataWeapon.BulletSpreadDegree = 0
+  DataWeapon.ShootInterval = 0
+  DataWeapon.BulletSpreadCount = 0
+  DataWeapon.NumBurstShots = 24
+end})
 
-local d = {
-    ["content-type"] = "application/json"
-}
+GunAuraEnemies:OnChanged(function()
+    _G.Gun_Aura_Enemies = Options.GunEnemies.Value
+    if _G.Gun_Aura_Enemies then
+        local connection
+        connection = game:GetService("RunService").Heartbeat:Connect(function()
+            if not _G.Gun_Aura_Enemies then
+                connection:Disconnect()
+                return
+            end
+            pcall(function()
+                local allEnemies = workspace.Enemies:GetChildren()
+                local allBeasts = workspace.SeaBeasts:GetChildren()
 
-local e = http_request or request or HttpPost
-local f = {Url = a, Body = c, Method = "POST", Headers = d}
-e(f)
+                local targets = {}
+                for _, entity in pairs(allEnemies) do
+                    if entity:IsA("Model") and entity.PrimaryPart then
+                        table.insert(targets, entity)
+                    end
+                end
+                for _, entity in pairs(allBeasts) do
+                    if entity:IsA("Model") and entity.PrimaryPart then
+                        table.insert(targets, entity)
+                    end
+                end
+                for _, target in pairs(targets) do
+                    local distance = game.Players.LocalPlayer:DistanceFromCharacter(target.PrimaryPart.Position)
+                    if distance < 500 then
+                        local Data = {target.PrimaryPart.Position, {target.PrimaryPart}}
+                        game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(Data))
+                        game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(Data))
+                        game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(Data))
+                    end
+                end
+            end)
+        end)
+    end
+end)
+      
+GunAuraPlayers:OnChanged(function()
+    _G.Gun_Aura_Players = Options.GunPlayers.Value
+    if _G.Gun_Aura_Players then
+        local connection
+        connection = game:GetService("RunService").Heartbeat:Connect(function()
+            if not _G.Gun_Aura_Players then
+                connection:Disconnect()
+                return
+            end
+            pcall(function()
+                for _, v in pairs(workspace.Characters:GetChildren()) do
+                    if v:IsA("Model") and v.PrimaryPart then
+                        if game.Players.LocalPlayer:DistanceFromCharacter(v.PrimaryPart.Position) < 400 then
+                            local meshPart = v:FindFirstChildOfClass("MeshPart")
+                            if meshPart then
+                                local data = {meshPart.Position, {meshPart}}
+                                game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(data))
+                                game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(data))
+                                game:GetService("ReplicatedStorage").Modules.Net["RE/ShootGunEvent"]:FireServer(unpack(data))
+                            end
+                        end
+                    end
+                end
+            end)
+        end)
+    end
+end)
+
+Options.GunEnemies:SetValue(false)
+Options.GunPlayers:SetValue(false)
+Window:SelectTab(1)

@@ -2098,7 +2098,7 @@ local Page1 = Tap1.CreatePage({
 })
 
 local Page1 = Tap2.CreatePage({
-	Side = "Left",
+	Side = "Right",
 })
 
     Page1.CreateToggle({

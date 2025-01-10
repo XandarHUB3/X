@@ -2065,7 +2065,7 @@ end
 
 -- Mint Green Theme
 local Windown = library.Create({
-    Title = "TestNa Hub | NextGen", Logo = 16910398205,
+    Title = "Razer Hub |  Fisch", Logo = 78836839305136,
     CornerRadius = 2, UISize = {
         X = 600,
         Y = 400

@@ -2080,12 +2080,31 @@ local Windown = library.Create({
     }
 })
 
-local Page1 = Window:CreateTab({
-	Title = "General",
-	Icon = "home"
+local Tap1 = Windown.CreateTap({
+	Title = "Main",
+	Icon = 15169955786
 })
 
-local Section1 = Page1:CreateSection({
-	Title = "This is a section Right",
-	Side = "Right"
+local Page1 = Tap1.CreatePage({
+	Side = "Left",
+})
+
+    Page1.CreateToggle({
+	Name = "Auto Farm Level",
+	Dis = "",
+	Value = false,
+	Callback = function(v)
+	end,
+})
+
+local Page1 = Tap2.CreatePage({
+	Side = "Left",
+})
+
+    Page1.CreateToggle({
+	Name = "Auto Farm Level",
+	Dis = "",
+	Value = false,
+	Callback = function(v)
+	end,
 })

@@ -2085,16 +2085,11 @@ local Tap1 = Windown.CreateTap({
 	Icon = 15169955786
 })
 
-local Tap1 = Windown.CreateTap({
-	Title = "Zone",
-	Icon = 15169955786
-})
-
 local Page1 = Tap1.CreatePage({
 	Side = "Left",
 })
 
-local Page1 = Zone.CreatePage({
+local Page1 = Tap.CreatePage({
 	Side = "right",
 })
 

@@ -2080,35 +2080,12 @@ local Windown = library.Create({
     }
 })
 
-local Tap = {
-	Main = Window:CreateTab({Title = "Main", Icon = "box"}),
-	Zone = Window:CreateTab({ Title = "Zone", Icon = "star"}),
-	Shop = Window:CreateTab({ Title = "Shop", Icon = "shopping-bag"}),
-	Teleport = Window:CreateTab({Title = "Teleport", Icon = "asterisk"}),
-	Settings = Window:CreateTab({Title = "Settings", Icon = "settings"})
-}
-
-local Tap = Windown.CreateTap({
-	Title = "Main",
-	Icon = 15169955786
+local Page1 = Window:CreateTab({
+	Title = "General",
+	Icon = "home"
 })
 
-local Page1 = Tap1.CreatePage({
-	Side = "Left",
+local Section1 = Page1:CreateSection({
+	Title = "This is a section Right",
+	Side = "Right"
 })
-
-    Page1.CreateToggle({
-	Name = "Auto Farm Level",
-	Dis = "",
-	Value = false,
-	Callback = function(v)
-	end,
-})
-
-Main = Tap.Main:CreateSection({Title = "Main",Side = "Left"}) do
-	SelectPosition = Main:CreateLabel({        
-		Title = "Position : "
- })
-
-
-Seller = Tap.Main:CreateSection({Title = "Seller",Side = "Right"})

@@ -2065,7 +2065,7 @@ end
 
 -- Mint Green Theme
 local Windown = library.Create({
-    Title = "Razer Hub |  Fisch", Logo = 82059635556284,
+    Title = "Razer Hub |  Fisch", Logo = 858153060820,
     CornerRadius = 2, UISize = {
         X = 600,
         Y = 400
@@ -2080,7 +2080,15 @@ local Windown = library.Create({
     }
 })
 
-local Tap1 = Windown.CreateTap({
+local Tap = {
+	Main = Window:CreateTab({Title = "Main", Icon = "box"}),
+	Zone = Window:CreateTab({ Title = "Zone", Icon = "star"}),
+	Shop = Window:CreateTab({ Title = "Shop", Icon = "shopping-bag"}),
+	Teleport = Window:CreateTab({Title = "Teleport", Icon = "asterisk"}),
+	Settings = Window:CreateTab({Title = "Settings", Icon = "settings"})
+}
+
+local Tap = Windown.CreateTap({
 	Title = "Main",
 	Icon = 15169955786
 })
@@ -2097,18 +2105,10 @@ local Page1 = Tap1.CreatePage({
 	end,
 })
 
-Page1.CreateToggle({
-	Name = "Auto Farm Level",
-	Dis = "",
-	Value = false,
-	Callback = function(v)
-	end,
-})
+Main = Tap.Main:CreateSection({Title = "Main",Side = "Left"}) do
+	SelectPosition = Main:CreateLabel({        
+		Title = "Position : "
+ })
 
-Page1.CreateToggle({
-	Name = "Auto Farm Level",
-	Dis = "",
-	Value = false,
-	Callback = function(v)
-	end,
-})
+
+Seller = Tap.Main:CreateSection({Title = "Seller",Side = "Right"})

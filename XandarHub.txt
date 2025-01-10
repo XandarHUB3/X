@@ -2097,11 +2097,19 @@ local Page1 = Tap1.CreatePage({
 	end,
 })
 
-local Page1 = Tap2.CreatePage({
+local Page1 = Tap1.CreatePage({
 	Side = "Right",
 })
 
     Page1.CreateToggle({
+	Name = "Auto Farm Level",
+	Dis = "",
+	Value = false,
+	Callback = function(v)
+	end,
+})
+
+Page1.CreateToggle({
 	Name = "Auto Farm Level",
 	Dis = "",
 	Value = false,

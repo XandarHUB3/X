@@ -2096,3 +2096,19 @@ local Page1 = Tap1.CreatePage({
 	Callback = function(v)
 	end,
 })
+
+local Tap2 = Windown.CreateTap({
+	Title = "Mainw",
+	Icon = 15169955786
+})
+
+local Page1 = Tap2.CreatePage({
+	Side = "Right",
+
+    Page1.CreateToggle({
+	Name = "Auto Farm ",
+	Dis = "",
+	Value = false,
+	Callback = function(v)
+	end,
+})
